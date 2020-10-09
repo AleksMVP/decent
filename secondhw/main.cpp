@@ -132,8 +132,8 @@ int main() {
     std::string trinketResponse = trinket.challenge(carResponse);
     std::string carChalengeResponse = car.challenge(trinketResponse);
 
-    std::cout << "Trinket message: " << trinketSentMessage << std::endl
-              << "Car generate random, encode and response: " << "******************************************" << std::endl
-              << "Trinket deconde car's random and send back: " << trinketResponse << std::endl
-              << "Car check equal: " << carChalengeResponse << std::endl;
+    std::cout << "[1] Trinket message: " << trinketSentMessage << std::endl
+              << "[2] Car generate random value, encode and response: " << "******************************************" << std::endl
+              << "[3] Trinket deconde car's random value and send back: " << trinketResponse << std::endl
+              << "[4] Car check equal: " << carChalengeResponse << std::endl;
 }

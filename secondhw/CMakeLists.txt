@@ -9,6 +9,6 @@ link_directories("/usr/local/lib")
 
 add_executable(${PROJECT_NAME} main.cpp)
 
-target_compile_options(${PROJECT_NAME} PRIVATE -Wall)
+target_compile_options(${PROJECT_NAME} PRIVATE -Wall -Werror -Wextra -Wpedantic)
 target_link_libraries(${PROJECT_NAME} cryptopp)
 
