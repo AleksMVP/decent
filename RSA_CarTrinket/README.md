@@ -39,25 +39,29 @@ Response. Брелок делает то, что нужно, отправляя 
 
 ***
 
-# Build commands
+# Running 
+### Build
 ```
- mkdir build
- cd build
- cmake ..
- make
+git clone https://github.com/AleksMVP/decent.git
+cd decent/RSA_CarTrinket
+mkdir build
+cd build
+cmake ..
+make
 ```
-> For build you need [cryptopp](https://www.cryptopp.com/)
 
-# Launch command
+### Launch
 ```
 ./main.out
 ```
 
+> For build you need [cryptopp](https://www.cryptopp.com/)
+
 # Work example
 ```
-[1] Trinket message: Open the door please
-[2] Car generate random value, encode and response: ******************************************
-[3] Trinket deconde car's random value and send back: 1751208373
-[4] Car check equal: Ok, "Open the door please" complete.
+[Trinket -> Car] Trinket send command: Open the door please
+[Car -> Trinket] Car generate random value, encode and response: ******************************************
+[Trinket -> Car] Trinket deconde car's random value and send back: 1908471472
+[Car -> Trinket] Car check equal: Ok, "Open the door please" complete.
 ```
 
