@@ -36,3 +36,28 @@ Response. Брелок делает то, что нужно, отправляя 
 ```
 
 Логика, последовательность шагов, внутренние данные - все это вы проектируете сами, единственное требование - генерация и проверка ЭЦП. Рекомендуется сначала спроектировать протокол с пустыми mock-нутыми функциями generate_sig() и verify_sig() и лишь в конце использовать криптографичекую билиотеку.
+
+***
+
+# Build commands
+```
+ mkdir build
+ cd build
+ cmake ..
+ make
+```
+> For build you need [cryptopp](https://www.cryptopp.com/)
+
+# Launch command
+```
+./main.out
+```
+
+# Work example
+```
+[1] Trinket message: Open the door please
+[2] Car generate random value, encode and response: ******************************************
+[3] Trinket deconde car's random value and send back: 1751208373
+[4] Car check equal: Ok, "Open the door please" complete.
+```
+
