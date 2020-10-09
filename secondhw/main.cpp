@@ -26,10 +26,13 @@ class Car {
         return encrypt(sentMessage_);
     }
 
-    std::string challenge(const std::string& response) const {
-        if (response == sentMessage_) {
+    std::string challenge(const std::string& response) {
+        if (response == sentMessage_ && prevMessage_ != "") {
             std::stringstream ss; 
             ss << "Ok, \"" << prevMessage_ << "\" complete.";
+
+            sentMessage_ = "";
+            prevMessage_ = "";
 
             return ss.str();
         }
@@ -69,7 +72,7 @@ class Trinket {
         return "Open the door please";
     }
 
-    std::string chalenge(const std::string& response) const {
+    std::string challenge(const std::string& response) const {
         return decrypt(response);
     }
 
@@ -98,7 +101,8 @@ int main() {
     CryptoPP::InvertibleRSAFunction params;
     params.GenerateRandomWithKeySize(rng, 1024*4);
 
-    /*const CryptoPP::Integer& n = params.GetModulus();
+    /*
+    const CryptoPP::Integer& n = params.GetModulus();
     const CryptoPP::Integer& p = params.GetPrime1();
     const CryptoPP::Integer& q = params.GetPrime2();
     const CryptoPP::Integer& d = params.GetPrivateExponent();
@@ -112,7 +116,8 @@ int main() {
     std::cout << " q: " << q << std::endl;
     std::cout << " d: " << d << std::endl;
     std::cout << " e: " << e << std::endl;
-    std::cout << std::endl;*/
+    std::cout << std::endl;
+    */
 
     ///////////////////////////////////////
     // Create Keys
@@ -124,11 +129,11 @@ int main() {
 
     std::string trinketSentMessage = trinket.generateMessage();
     std::string carResponse = car.getMessage(trinketSentMessage);
-    std::string trinketResponse = trinket.chalenge(carResponse);
+    std::string trinketResponse = trinket.challenge(carResponse);
     std::string carChalengeResponse = car.challenge(trinketResponse);
 
     std::cout << "Trinket message: " << trinketSentMessage << std::endl
               << "Car generate random, encode and response: " << "******************************************" << std::endl
-              << "Trinket deconde car's random and sent back: " << trinketResponse << std::endl
+              << "Trinket deconde car's random and send back: " << trinketResponse << std::endl
               << "Car check equal: " << carChalengeResponse << std::endl;
 }

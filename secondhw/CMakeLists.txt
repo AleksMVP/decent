@@ -3,7 +3,6 @@ project(main.out)
 set(CMAKE_CXX_STANDARD 17)
 
 include_directories("/usr/local/include")
-include_directories("/project/include")
 
 link_directories("/usr/lib")
 link_directories("/usr/local/lib")
